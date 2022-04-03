@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Content = styled.header`
   padding: 2rem 0 1.125rem;
   border-bottom: 1px solid var(--light-gray-clr);
-  margin-bottom: 1.125rem;
 
   .header {
     &__navigation {

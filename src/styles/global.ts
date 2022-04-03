@@ -66,4 +66,8 @@ export const GlobalStyles = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  ul {
+    list-style: none;
+  }
 `
