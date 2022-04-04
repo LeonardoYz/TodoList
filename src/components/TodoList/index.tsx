@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useTasks } from "../../hooks/useTasks";
 import { AddNewTask } from "../AddNewTask";
 
 import { Container } from "./styles";
 
 export function TodoList() {
-  const [isCheckboxActive, setIsCheckboxActive] = useState(false)
+  const { isTaskCompleted, handleCompleteTask } = useTasks()
 
   return (
     <main>
@@ -16,13 +16,13 @@ export function TodoList() {
             <li>
               <label 
                 className={`todo__checkbox--container ${
-                  isCheckboxActive ? "completed" : ""
+                  isTaskCompleted ? "completed" : ""
                 }`}
               >
                 <input 
                   type="checkbox"
                   className="todo__checkbox--input"
-                  onClick={() => setIsCheckboxActive(!isCheckboxActive)}
+                  onClick={handleCompleteTask}
                   hidden
                 />
                 <span className="todo__checkmark"></span>

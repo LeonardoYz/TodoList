@@ -1,15 +1,18 @@
+import { TasksProvider } from "./hooks/useTasks";
 import { Header } from "./components/Header";
 import { TodoList } from "./components/TodoList";
 
-import { Container } from "./styles/Container";
+import { Wrapper } from "./styles/Wrapper";
 import { GlobalStyles } from "./styles/global";
 
 export function App() {
   return (
-    <Container>
-      <GlobalStyles />
-      <Header />
-      <TodoList />
-    </Container>
+    <Wrapper>
+      <TasksProvider>
+        <GlobalStyles />
+        <Header />
+        <TodoList />
+      </TasksProvider>
+    </Wrapper>
   );
 }

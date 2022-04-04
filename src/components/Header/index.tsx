@@ -1,13 +1,9 @@
-import { useState } from "react";
+import { useTasks } from "../../hooks/useTasks";
 
 import { Button, Content } from "./styles";
 
 export function Header() {
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  function handleActiveCurrentFilter(filter: string) {
-    setActiveFilter(filter);
-  }
+  const { activeFilter, handleActiveCurrentFilter } = useTasks()
 
   return (
     <Content>
