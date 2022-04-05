@@ -4,7 +4,7 @@ import { AddNewTask } from "../AddNewTask";
 import { Container } from "./styles";
 
 export function TodoList() {
-  const { isTaskCompleted, handleCompleteTask } = useTasks()
+  const { tasks, handleToggleCompletion } = useTasks()
 
   return (
     <main>
@@ -13,22 +13,25 @@ export function TodoList() {
 
         <div className="todo__tasks">
           <ul>
-            <li>
-              <label 
-                className={`todo__checkbox--container ${
-                  isTaskCompleted ? "completed" : ""
-                }`}
-              >
-                <input 
-                  type="checkbox"
-                  className="todo__checkbox--input"
-                  onClick={handleCompleteTask}
-                  hidden
-                />
-                <span className="todo__checkmark"></span>
-                Do coding challenges
-              </label>
-            </li>
+            {tasks.map((task, index) => (
+              <li key={index}>
+                <label 
+                  className={`todo__checkbox--container ${
+                    task.isCompleted ? "completed" : ""
+                  }`}
+                >
+                  <input 
+                    type="checkbox"
+                    className="todo__checkbox--input"
+                    onClick={() => handleToggleCompletion(task.id)}
+                    checked={task.isCompleted}
+                    hidden
+                  />
+                  <span className="todo__checkmark"></span>
+                  {task.name}
+                </label>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>

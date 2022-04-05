@@ -6,6 +6,13 @@ export const Container = styled.section`
   row-gap: 2rem;
 
   .todo {
+    &__tasks {
+      ul {
+        display: grid;
+        gap: 27px;
+      }
+    }
+
     &__checkbox {
       &--container {
         display: flex;
