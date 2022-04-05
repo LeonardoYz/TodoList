@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { v4 as uuid } from "uuid";
+import { Tasks } from "../types";
 
 interface TasksContextProps {
   tasks: Tasks[];
@@ -20,12 +21,6 @@ interface TasksContextProps {
 
 interface TasksProviderProps {
   children: ReactNode;
-}
-
-interface Tasks {
-  id: string;
-  name: string;
-  isCompleted: boolean;
 }
 
 const TasksContext = createContext({} as TasksContextProps);

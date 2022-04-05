@@ -44,6 +44,10 @@ export const Button = styled.button`
 
   transition: color 280ms ease-in;
 
+  &:hover {
+    color: var(--blue-clr);
+  }
+
   &::after {
     content: "";
     position: absolute;

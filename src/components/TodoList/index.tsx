@@ -1,40 +1,73 @@
+import { MdDeleteOutline } from "react-icons/md";
 import { useTasks } from "../../hooks/useTasks";
 import { AddNewTask } from "../AddNewTask";
+import { Task } from "../Task";
 
-import { Container } from "./styles";
+import { BtnContainer, Container } from "./styles";
 
 export function TodoList() {
-  const { tasks, handleToggleCompletion } = useTasks()
+  const { tasks, activeFilter } = useTasks();
+  let filteredTasks = null;
+  const isFinishedAnyTaskAndFilterEqualsCompleted = tasks.some(
+    task => task.isCompleted && activeFilter === "completed"
+  )
+
+  function filterTasks(needFilter: boolean, isFinished: boolean) {
+    if (needFilter) {
+      filteredTasks = tasks
+      .filter(task => task.isCompleted === isFinished)
+      .map(task => (
+        <Task
+          key={task.id}
+          id={task.id}
+          name={task.name}
+          isCompleted={task.isCompleted}
+        />
+      ));
+
+      return
+    }
+
+    filteredTasks = tasks.map(task => (
+      <Task
+        key={task.id}
+        id={task.id}
+        name={task.name}
+        isCompleted={task.isCompleted}
+      />
+    ));
+  }
+
+  if (activeFilter === "active") {
+    filterTasks(true, false)
+  } else if (activeFilter === "completed") {
+    filterTasks(true, true)
+  } else {
+    filterTasks(false, false)
+  }
 
   return (
     <main>
-      <Container>
+      <Container isCompleted={activeFilter === "completed"}>
         <AddNewTask />
 
-        <div className="todo__tasks">
+        <div className="tasks">
           <ul>
-            {tasks.map((task, index) => (
-              <li key={index}>
-                <label 
-                  className={`todo__checkbox--container ${
-                    task.isCompleted ? "completed" : ""
-                  }`}
+            {filteredTasks}
+            {isFinishedAnyTaskAndFilterEqualsCompleted && (
+              <BtnContainer>
+                <button
+                  type="button" 
+                  className="delete-button"
                 >
-                  <input 
-                    type="checkbox"
-                    className="todo__checkbox--input"
-                    onClick={() => handleToggleCompletion(task.id)}
-                    checked={task.isCompleted}
-                    hidden
-                  />
-                  <span className="todo__checkmark"></span>
-                  {task.name}
-                </label>
-              </li>
-            ))}
+                  <MdDeleteOutline size={12} color="#fff" />
+                  delete all
+                </button>
+              </BtnContainer>
+            )}
           </ul>
         </div>
       </Container>
     </main>
-  )
+  );
 }
