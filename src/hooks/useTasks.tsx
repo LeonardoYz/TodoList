@@ -17,6 +17,8 @@ interface TasksContextProps {
   handleActiveCurrentFilter: (arg: string) => void;
   handleToggleCompletion: (arg: string) => void;
   handleCreateNewTask: () => void;
+  handleDeleteTask: (arg: string) => void;
+  handleDeleteAllCompletedTasks: () => void;
 }
 
 interface TasksProviderProps {
@@ -56,6 +58,18 @@ export function TasksProvider({ children }: TasksProviderProps) {
     setTasks(completedTask)
   }
 
+  function handleDeleteTask(id: string) {
+    const updatedTasks = tasks.filter(task => task.id !== id)
+
+    setTasks(updatedTasks)
+  }
+
+  function handleDeleteAllCompletedTasks() {
+    const updatedTasks = tasks.filter(task => task.isCompleted === false)
+
+    setTasks(updatedTasks)
+  }
+
   return (
     <TasksContext.Provider
       value={{
@@ -66,6 +80,8 @@ export function TasksProvider({ children }: TasksProviderProps) {
         handleActiveCurrentFilter,
         handleToggleCompletion,
         handleCreateNewTask,
+        handleDeleteTask,
+        handleDeleteAllCompletedTasks,
       }}
     >
       {children}

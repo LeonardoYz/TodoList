@@ -7,7 +7,7 @@ import { Container } from "./styles";
 import { IconContext } from "react-icons";
 
 export function Task({ id, name, isCompleted }: Tasks) {
-  const { handleToggleCompletion, activeFilter } = useTasks();
+  const { handleToggleCompletion, activeFilter, handleDeleteTask } = useTasks();
 
   return (
     <Container>
@@ -34,6 +34,7 @@ export function Task({ id, name, isCompleted }: Tasks) {
             <button 
               type="button" 
               className="todo__delete"
+              onClick={() => handleDeleteTask(id)}
             >
               <IconContext.Provider
                 value={{

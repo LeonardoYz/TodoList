@@ -1,12 +1,13 @@
-import { MdDeleteOutline } from "react-icons/md";
 import { useTasks } from "../../hooks/useTasks";
 import { AddNewTask } from "../AddNewTask";
 import { Task } from "../Task";
 
+import { MdDeleteOutline } from "react-icons/md";
+
 import { BtnContainer, Container } from "./styles";
 
 export function TodoList() {
-  const { tasks, activeFilter } = useTasks();
+  const { tasks, activeFilter, handleDeleteAllCompletedTasks } = useTasks();
   let filteredTasks = null;
   const isFinishedAnyTaskAndFilterEqualsCompleted = tasks.some(
     task => task.isCompleted && activeFilter === "completed"
@@ -59,6 +60,7 @@ export function TodoList() {
                 <button
                   type="button" 
                   className="delete-button"
+                  onClick={handleDeleteAllCompletedTasks}
                 >
                   <MdDeleteOutline size={12} color="#fff" />
                   delete all
