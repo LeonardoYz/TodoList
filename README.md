@@ -1,15 +1,14 @@
-<div>
-  <h1 align="center">✅ 𝐓𝐨𝐝𝐨 𝐚𝐩𝐩</h1>
-  <p align="center">
-  ❗ Solution for a challenge from <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
-  </p>
-</div>
+<h1 align="center">✅ 𝐓𝐨𝐝𝐨 𝐚𝐩𝐩</h1>
+<p align="center">
+❗ Solution for a challenge from <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
+</p>
 
 <div align="center">
   <a href="#links">Links</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#how-to-use">How To Use</a>
 </div>
+<br />
 
 <div>
   <p>🔎 <strong>About: </strong>Application made to help you better organize your tasks and improve your productivity.</p>
