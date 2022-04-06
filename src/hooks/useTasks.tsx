@@ -4,6 +4,8 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
+  useRef,
   useState,
 } from "react";
 import { v4 as uuid } from "uuid";
@@ -30,7 +32,29 @@ const TasksContext = createContext({} as TasksContextProps);
 export function TasksProvider({ children }: TasksProviderProps) {
   const [activeFilter, setActiveFilter] = useState("all");
   const [taskName, setTaskName] = useState("");
-  const [tasks, setTasks] = useState<Tasks[]>([]);
+  const [tasks, setTasks] = useState<Tasks[]>(() => {
+    const storageTasks = localStorage.getItem("tasks");
+
+    if (storageTasks) {
+      return JSON.parse(storageTasks)
+    }
+
+    return [];
+  });
+
+  const prevTaskRef = useRef<Tasks[]>()
+
+  useEffect(() => {
+    prevTaskRef.current = tasks
+  })
+
+  const taskPreviousValue = prevTaskRef.current ?? tasks
+
+  useEffect(() => {
+    if (taskPreviousValue !== tasks) {
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+  }, [tasks, taskPreviousValue])
 
   function handleActiveCurrentFilter(filter: string) {
     setActiveFilter(filter);
