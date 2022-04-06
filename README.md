@@ -36,9 +36,15 @@
 
 <div>
   <h2 id="links">🔗𝐋𝐢𝐧𝐤𝐬</h2>
-  <p>🗔 Demo URL: <a href="" target="_blank">Demo</a></p>
-  <p>💡 Solution: <a href="" target="_blank">Solution</a></p>
-  <p>🗡️ Challenge: <a href="" target="_blank">Challenge</a></p>
+  <p>
+    🗔 Demo URL: <a href="https://todolist-nine-bay.vercel.app/" target="_blank">Demo</a>
+  </p>
+  <p>
+    💡 Solution: <a href="https://devchallenges.io/solutions/8DMHPA1ThgBBnFpxkgId" target="_blank">Solution</a>
+  </p>
+  <p>
+    🗡️ Challenge: <a href="https://devchallenges.io/challenges/hH6PbOHBdPm6otzw2De5" target="_blank">Challenge</a>
+  </p>
 </div>
 
 <h2 id="technologies">⚙️ 𝗧𝗲𝗰𝗵𝗻𝗼𝗹𝗼𝗴𝗶𝗲𝘀</h2>
